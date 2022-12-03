@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
-import dataSource from '../ormconfig'
+import dataSource from '..'
 
 export class CreateCategories1670078097982 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
