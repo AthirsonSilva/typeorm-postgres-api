@@ -1,5 +1,5 @@
-import { getRepository } from 'typeorm'
 import { Category } from '../entities/Category'
+import { AppDataSource } from './../index'
 
 type CategoryRequest = {
 	name: string
@@ -8,7 +8,7 @@ type CategoryRequest = {
 
 export class CreateCategoryService {
 	async execute({ name, description }: CategoryRequest): Promise<Category> {
-		const repository = getRepository(Category)
+		const repository = AppDataSource.getRepository(Category)
 
 		const categoryAlreadyExists = await repository.findOne({
 			where: { name }
