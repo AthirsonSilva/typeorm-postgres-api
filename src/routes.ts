@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { CreateCategoryController } from './database/controllers/Categories/CreateCategoryController'
 import { DeleteCategoryController } from './database/controllers/Categories/DeleteCategoryController'
+import { FindCategoryByNameController } from './database/controllers/Categories/FindCategoryByNameController'
 import { GetAllCategoriesController } from './database/controllers/Categories/GetCategoryController'
 import { UpdateCategoryController } from './database/controllers/Categories/UpdateCategoryController'
 import { CreateVideoController } from './database/controllers/Videos/CreateVideoController'
@@ -16,6 +17,7 @@ routes.post('/categories', new CreateCategoryController().handle)
 routes.get('/categories', new GetAllCategoriesController().handle)
 routes.delete('/categories', new DeleteCategoryController().handle)
 routes.patch('/categories', new UpdateCategoryController().handle)
+routes.post('/category', new FindCategoryByNameController().handle)
 
 // Videos
 routes.post('/videos', new CreateVideoController().handle)
