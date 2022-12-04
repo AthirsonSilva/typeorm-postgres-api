@@ -11,7 +11,7 @@ import { v4 as uuid } from 'uuid'
 import { Category } from './Category'
 
 @Entity('videos')
-export class Videos {
+export class Video {
 	@PrimaryColumn()
 	id: string
 
@@ -22,10 +22,7 @@ export class Videos {
 	description: string
 
 	@Column()
-	duration: number
-
-	@Column()
-	url: string
+	duration: string
 
 	@Column()
 	category_id: string
