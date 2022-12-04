@@ -14,11 +14,19 @@ export class FindVideosByNameService {
 				where: { name }
 			})
 
+			const videoQuery = await videoRepository
+				.createQueryBuilder()
+				.select('video')
+				.from(Video, 'video')
+				.where('video.name = :name', { name: name })
+				.innerJoinAndSelect('video.category', 'category')
+				.getOne()
+
 			if (!video) {
 				return new Error('Video not found')
 			}
 
-			return video
+			return videoQuery
 		} catch (error) {
 			throw new Error(error.message as string)
 		}
