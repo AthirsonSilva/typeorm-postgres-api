@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { CreateCategoryController } from './database/controllers/Categories/CreateCategoryController'
+import { DeleteCategoryController } from './database/controllers/Categories/DeleteCategoryController'
 import { GetAllCategoriesController } from './database/controllers/Categories/GetCategoryController'
 import { CreateVideoController } from './database/controllers/Videos/CreateVideoController'
 import { DeleteVideoController } from './database/controllers/Videos/DeleteVideoController'
@@ -12,6 +13,7 @@ const routes = Router()
 // Categories
 routes.post('/categories', new CreateCategoryController().handle)
 routes.get('/categories', new GetAllCategoriesController().handle)
+routes.delete('/categories', new DeleteCategoryController().handle)
 
 // Videos
 routes.post('/videos', new CreateVideoController().handle)
