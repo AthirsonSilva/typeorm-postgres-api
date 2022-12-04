@@ -6,7 +6,10 @@ export class GetAllVideosService {
 		try {
 			const repository = AppDataSourceRepository(Video)
 
-			const videos = await repository.find()
+			const videos = await repository.find({
+				select: ['id', 'name', 'description', 'duration'],
+				relations: ['category']
+			})
 
 			return videos
 		} catch (error) {
