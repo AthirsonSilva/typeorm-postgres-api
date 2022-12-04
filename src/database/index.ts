@@ -1,4 +1,4 @@
-import { DataSource } from 'typeorm'
+import { DataSource, EntityTarget, ObjectLiteral } from 'typeorm'
 
 export const AppDataSource = new DataSource({
 	type: 'postgres',
@@ -12,6 +12,12 @@ export const AppDataSource = new DataSource({
 	entities: ['src/database/entities/*.ts'],
 	migrations: ['src/database/migrations/*.ts']
 })
+
+export const AppDataSourceRepository = (
+	entity: EntityTarget<ObjectLiteral>
+) => {
+	return AppDataSource.getRepository(entity)
+}
 
 AppDataSource.initialize()
 	.then(() => {
